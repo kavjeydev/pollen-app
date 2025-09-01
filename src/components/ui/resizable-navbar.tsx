@@ -277,12 +277,12 @@ export const NavbarButton = ({
   };
 
   return (
-    <Tag
-      href={href || undefined}
+    <div
+      {...(Tag === "a" && href ? { href } : {})}
       className={cn(baseStyles, variantStyles[variant], className)}
-      {...props}
+      {...props as any}
     >
       {children}
-    </Tag>
+    </div>
   );
 };

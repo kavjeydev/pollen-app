@@ -60,11 +60,11 @@ const MovingLine = () => {
               damping: 100,
             }),
           }}
-          transition={transition}
+          transition={{ duration: 14, ease: [0.42, 0, 0.58, 1] }}
           d={PATH}
           stroke="var(--blue-500)"
           strokeOpacity="1"
-          strokeLinecap={"round"}
+          strokeLinecap="round"
           strokeWidth="3"
         />
       </svg>

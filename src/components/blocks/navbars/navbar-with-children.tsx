@@ -246,13 +246,13 @@ export const MenuItem = ({
         <motion.div
           initial={{ opacity: 0, scale: 0.85, y: 10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={transition}
+          transition={{ type: "spring" as const, mass: 0.5, damping: 11.5, stiffness: 100, restDelta: 0.001, restSpeed: 0.001 }}
         >
           {active === item && (
             <div className="absolute left-1/2 top-[calc(100%_+_0.2rem)] -translate-x-1/2 transform pt-4">
               <div className="">
                 <motion.div
-                  transition={transition}
+                  transition={{ type: "spring" as const, mass: 0.5, damping: 11.5, stiffness: 100, restDelta: 0.001, restSpeed: 0.001 }}
                   layoutId="active" // layoutId ensures smooth animation
                   className="mt-4 overflow-hidden rounded-2xl bg-white shadow-xl backdrop-blur-sm dark:bg-neutral-950"
                 >
