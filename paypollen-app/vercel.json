@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "name": "paypollen-api",
+  "builds": [
+    {
+      "src": "apps/api/src/index.ts",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["apps/api/src/**"]
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "apps/api/src/index.ts"
+    },
+    {
+      "src": "/health",
+      "dest": "apps/api/src/index.ts"
+    },
+    {
+      "src": "/webhooks/(.*)",
+      "dest": "apps/api/src/index.ts"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "functions": {
+    "apps/api/src/index.ts": {
+      "maxDuration": 30
+    }
+  }
+}

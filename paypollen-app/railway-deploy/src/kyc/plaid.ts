@@ -80,7 +80,13 @@ export async function retryIDVSession(idvId: string): Promise<string | null> {
   try {
     const response = await plaidClient.identityVerificationRetry({
       identity_verification_id: idvId,
-    } as any);
+      steps: {
+        verify_sms: true,
+        kyc_check: true,
+        documentary_verification: true,
+        selfie_check: true,
+      },
+    });
 
     if (response.data.shareable_url) {
       return response.data.shareable_url;

@@ -26,7 +26,7 @@ export async function validateTurnstile(
     const formData = new URLSearchParams();
     formData.append("secret", config.TURNSTILE_SECRET_KEY);
     formData.append("response", turnstileToken as string);
-    formData.append("remoteip", req.ip || "");
+    formData.append("remoteip", req.ip);
 
     const response = await fetch(
       "https://challenges.cloudflare.com/turnstile/v0/siteverify",
@@ -39,7 +39,7 @@ export async function validateTurnstile(
       },
     );
 
-    const result = (await response.json()) as TurnstileResponse;
+    const result: TurnstileResponse = await response.json();
 
     if (!result.success) {
       logger.warn("Turnstile validation failed:", {

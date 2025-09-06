@@ -1,0 +1,68 @@
+{
+  "family": "paypollen-api",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "arn:aws:iam::ACCOUNT-ID:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::ACCOUNT-ID:role/paypollen-api-task-role",
+  "containerDefinitions": [
+    {
+      "name": "paypollen-api",
+      "image": "ACCOUNT-ID.dkr.ecr.us-east-1.amazonaws.com/paypollen-api:latest",
+      "portMappings": [
+        {
+          "containerPort": 3001,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true,
+      "environment": [
+        {
+          "name": "NODE_ENV",
+          "value": "production"
+        },
+        {
+          "name": "PORT",
+          "value": "3001"
+        }
+      ],
+      "secrets": [
+        {
+          "name": "MONGODB_URI",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:ACCOUNT-ID:secret:paypollen/mongodb-uri"
+        },
+        {
+          "name": "STYTCH_SECRET",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:ACCOUNT-ID:secret:paypollen/stytch-secret"
+        },
+        {
+          "name": "PLAID_SECRET",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:ACCOUNT-ID:secret:paypollen/plaid-secret"
+        },
+        {
+          "name": "JWT_SECRET",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:ACCOUNT-ID:secret:paypollen/jwt-secret"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/paypollen-api",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "healthCheck": {
+        "command": [
+          "CMD-SHELL",
+          "curl -f http://localhost:3001/health || exit 1"
+        ],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3,
+        "startPeriod": 60
+      }
+    }
+  ]
+}

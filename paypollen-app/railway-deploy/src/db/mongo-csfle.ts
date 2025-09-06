@@ -80,8 +80,7 @@ export function getClientEncryption(): ClientEncryption {
 
 export async function closeMongoCSFLE(): Promise<void> {
   if (clientEncryption) {
-    // ClientEncryption doesn't have a close method in newer versions
-    // The connection will be closed when the client is closed
+    await clientEncryption.close();
   }
   if (encryptedClient) {
     await encryptedClient.close();

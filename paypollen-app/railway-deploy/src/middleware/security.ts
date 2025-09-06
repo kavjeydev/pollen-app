@@ -44,7 +44,7 @@ export const sensitiveOpLimiter = rateLimit({
 // IP allowlist middleware (for admin/internal endpoints)
 export function ipAllowlist(allowedIPs: string[]) {
   return (req: Request, res: Response, next: NextFunction) => {
-    const clientIP = req.ip || "";
+    const clientIP = req.ip;
 
     if (!allowedIPs.includes(clientIP)) {
       return res.status(403).json({
@@ -83,7 +83,7 @@ export function validateRequestSize(maxSizeBytes: number) {
   return (req: Request, res: Response, next: NextFunction) => {
     const contentLength = req.get("Content-Length");
 
-    if (contentLength && parseInt(contentLength, 10) > maxSizeBytes) {
+    if (contentLength && parseInt(contentLength) > maxSizeBytes) {
       return res.status(413).json({
         error: "Request entity too large",
         maxSize: `${maxSizeBytes} bytes`,

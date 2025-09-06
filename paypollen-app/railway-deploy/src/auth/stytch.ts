@@ -29,9 +29,9 @@ export async function authenticateSession(
       return {
         user_id: response.user.user_id,
         email: response.user.emails[0]?.email || "",
-        phone_number: response.user.phone_numbers[0]?.phone_number || undefined,
+        phone_number: response.user.phone_numbers[0]?.phone_number,
         status: response.user.status,
-        created_at: response.user.created_at || "",
+        created_at: response.user.created_at,
       };
     }
 
@@ -75,10 +75,9 @@ export async function authenticateMagicLink(token: string): Promise<{
         user: {
           user_id: response.user.user_id,
           email: response.user.emails[0]?.email || "",
-          phone_number:
-            response.user.phone_numbers[0]?.phone_number || undefined,
+          phone_number: response.user.phone_numbers[0]?.phone_number,
           status: response.user.status,
-          created_at: response.user.created_at || "",
+          created_at: response.user.created_at,
         },
         session_token: response.session_token,
       };

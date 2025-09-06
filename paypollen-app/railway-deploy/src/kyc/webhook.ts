@@ -78,7 +78,7 @@ router.post("/plaid/idv", async (req: Request, res: Response) => {
             webhook_type,
             webhook_code,
             received_at: new Date(),
-          } as any,
+          },
         },
       },
     );

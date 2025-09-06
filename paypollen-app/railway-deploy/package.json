@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon apps/api/src/server.ts",
-    "build": "tsc -p api-tsconfig.json",
+    "dev": "nodemon src/server.ts",
+    "build": "tsc",
     "start": "node dist/server.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "lint": "eslint apps/api/src --ext .ts,.tsx",
-    "keyvault:init": "ts-node apps/api/src/encryption/keyvault-init.ts"
+    "lint": "eslint src --ext .ts,.tsx",
+    "keyvault:init": "ts-node src/encryption/keyvault-init.ts"
   },
   "dependencies": {
     "express": "^4.18.2",

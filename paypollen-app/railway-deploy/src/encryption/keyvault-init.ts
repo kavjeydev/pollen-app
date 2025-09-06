@@ -68,8 +68,7 @@ async function initializeKeyVault() {
     process.exit(1);
   } finally {
     if (clientEncryption) {
-      // ClientEncryption doesn't have a close method in newer versions
-      // The connection will be closed when the client is closed
+      await clientEncryption.close();
     }
     if (client) {
       await client.close();
