@@ -1,0 +1,20 @@
+{
+  "pages": {
+    "/page": [
+      "static/chunks/node_modules_next_dist_1a6ee436._.js",
+      "static/chunks/paypollen-app_apps_web_src_app_favicon_ico_mjs_9a0a0378._.js",
+      "static/chunks/paypollen-app_apps_web_src_app_globals_fb91d4f5.css",
+      "static/chunks/paypollen-app_apps_web_src_app_layout_tsx_ce748aeb._.js",
+      "static/chunks/paypollen-app_apps_web_src_c8e3e0b4._.js",
+      "static/chunks/node_modules_f1876791._.js",
+      "static/chunks/paypollen-app_apps_web_src_app_page_tsx_352d9914._.js",
+      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_57cd06f1._.js",
+      "static/chunks/node_modules_next_dist_compiled_2ce9398a._.js",
+      "static/chunks/node_modules_next_dist_client_8f19e6fb._.js",
+      "static/chunks/node_modules_next_dist_0eb1e458._.js",
+      "static/chunks/ed0b0_@swc_helpers_cjs_d9e50ee1._.js",
+      "static/chunks/paypollen-app_apps_web_e69f0d32._.js",
+      "static/chunks/paypollen-app_apps_web_3cde29d5._.js"
+    ]
+  }
+}
