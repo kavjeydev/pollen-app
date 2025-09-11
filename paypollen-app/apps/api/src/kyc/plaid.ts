@@ -31,7 +31,7 @@ export async function createIDVSession(userId: string): Promise<string | null> {
   try {
     const request: IdentityVerificationCreateRequest = {
       is_shareable: true,
-      template_id: "idvtmp_4FrXJvfQU3zGUR", // Use your Plaid template ID
+      template_id: "YOUR_TEMPLATE_ID_HERE", // Replace with your actual Plaid template ID
       gave_consent: true,
       user: {
         client_user_id: userId,
